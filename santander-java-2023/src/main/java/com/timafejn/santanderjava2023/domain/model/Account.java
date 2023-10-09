@@ -6,29 +6,24 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@Getter
 @Entity
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
     @Setter
     private Long id;
-    @Getter
     @Setter
     @Column(unique = true)
     private String number;
-    @Getter
     @Setter
     private String digit;
-    @Getter
     @Setter
     private String agency;
-    @Getter
     @Setter
-    @Column(scale = 13, precision = 2)
+    @Column(scale = 2, precision = 13)
     private BigDecimal balance;
-    @Getter
     @Setter
-    @Column(scale = 13, precision = 2)
+    @Column(scale = 2, precision = 13)
     private BigDecimal creditLimit;
 }
