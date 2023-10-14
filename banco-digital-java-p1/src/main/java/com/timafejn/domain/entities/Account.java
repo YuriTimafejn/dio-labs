@@ -34,7 +34,7 @@ public abstract class Account implements AccountInterface {
     @Override
     public String getBalance() {
         DecimalFormat df = new DecimalFormat("#,###,###.00");
-        return  df.format(this.balance);
+        return this.balance.equals(BigDecimal.ZERO) ? "0,00" : df.format(this.balance);
     }
 
     public void newBalance(){
@@ -56,7 +56,7 @@ public abstract class Account implements AccountInterface {
         return "Conta: " + this.getAccountId() + "\n" +
                 "Agencia: " + this.agency + "\n" +
                 "cliente desde: " + this.getCreatedAt() + "\n" +
-                "Balance: $" + this.getBalance();
+                "Balance: $ " + this.getBalance();
 
     }
 }

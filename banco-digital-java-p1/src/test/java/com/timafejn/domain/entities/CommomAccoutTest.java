@@ -52,4 +52,16 @@ class CommomAccoutTest {
         assertEquals("47,01", account2.getBalance());
         assertEquals("50,00", account3.getBalance());
     }
+
+    @Test
+    @DisplayName("TEST GET BALANCE EQUAL 0.00")
+    void testGetBalanceEqualsZero() {
+        assertEquals("0,00", account.getBalance());
+    }
+    @Test
+    @DisplayName("TEST GET BALANCE HIGHER THAN 0.00")
+    void testGetBalanceHigherThanZero() {
+        account.deposit(100);
+        assertEquals("100,00", account.getBalance());
+    }
 }
