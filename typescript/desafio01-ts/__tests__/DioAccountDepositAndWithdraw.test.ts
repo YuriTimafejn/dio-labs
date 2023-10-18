@@ -11,13 +11,6 @@ afterEach(() => {
     accountPeople = null;
 });
 
-describe('DioAccout Test name change', () => {
-    test('change name', () => {
-        accountPeople?.setName('Teste Mudança de Nome');
-        expect(accountPeople?.getName()).toBe('Teste Mudança de Nome');
-    })
-});
-
 describe('DioAccout Tests Method deposit', () => {
     test('deposit $100', () => {
         accountPeople?.deposit(100);

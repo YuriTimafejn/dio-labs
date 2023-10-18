@@ -5,7 +5,7 @@ export class ChallengerAccount extends DioAccount {
         super(name, accountNumber)
     }
 
-    deposit (amount: number) : boolean | void {
+    public deposit (amount: number) : boolean | void {
         return super.deposit(amount + 10);
     }
 }
