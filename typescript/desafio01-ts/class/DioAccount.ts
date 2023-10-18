@@ -18,7 +18,7 @@ export abstract class DioAccount {
     return this.name
   }
 
-  deposit = (amount: number): boolean | void => {
+  deposit(amount: number): boolean | void {
     if(amount < 0) {
       throw new Error('Não é possível realizar depósito de valores negativos');
     }
@@ -43,7 +43,7 @@ export abstract class DioAccount {
     return this.balance;
   }
 
-  private validateStatus = (): boolean => {
+  protected validateStatus = (): boolean => {
     if (this.status) {
       return this.status
     }

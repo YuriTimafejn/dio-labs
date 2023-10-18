@@ -12,7 +12,7 @@ afterEach(() => {
 });
 
 describe('DioAccout Test name change', () => {
-    test('', () => {
+    test('change name', () => {
         accountPeople?.setName('Teste Mudança de Nome');
         expect(accountPeople?.getName()).toBe('Teste Mudança de Nome');
     })
