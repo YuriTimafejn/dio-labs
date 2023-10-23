@@ -28,13 +28,14 @@ class BandController extends Controller
 
     public function find($id)
     {
-        return Band::findOrFail($id);
+        return response()->json(Band::findOrFail($id), 200);
     }
 
     //TODO: Corrigir a questão dos parametros da URL
     public function listByGender($gender)
     {
-        $bands = Band::where('gender', '=', strtoupper($gender));
+        $bands = Band::where('gender', '=', strtoupper($gender))->get();
+        return response()->json($bands, 200);
     }
 
     public function update(Request $request, $id)
@@ -51,6 +52,10 @@ class BandController extends Controller
 
     public function delete($id)
     {
+        $band = Band::findOrFail($id);
 
+        $band->delete();
+
+        return response('', 204);
     }
 }
