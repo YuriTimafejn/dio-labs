@@ -17,7 +17,7 @@ class BandController extends Controller
 
         $band = Band::create([
             'band' => $request->input('band'),
-            'gender' => $request->input('gender')
+            'gender' => strtoupper($request->input('gender'))
         ]);
         return response()->json($band, 201);
     }
@@ -31,14 +31,22 @@ class BandController extends Controller
         return Band::findOrFail($id);
     }
 
+    //TODO: Corrigir a questão dos parametros da URL
     public function listByGender($gender)
     {
-
+        $bands = Band::where('gender', '=', strtoupper($gender));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
+        $band = Band::findOrFail($id);
 
+        $band->update([
+            'band' => $request->input('band'),
+            'gender' => strtoupper($request->input('gender'))
+        ]);
+
+        return response()->json($band, 200);
     }
 
     public function delete($id)
