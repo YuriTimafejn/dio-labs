@@ -6,26 +6,43 @@ use App\Models\Band;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class MusicController extends Controller
+class BandController extends Controller
 {
-    public function create(Request $request)
+    public function insert(Request $request): JsonResponse
     {
-        return Band::create($request->all());
+        $request->validate([
+            'band' => 'required|string',
+            'gender' => 'required|string'
+        ]);
+
+        $band = Band::create([
+            'band' => $request->input('band'),
+            'gender' => $request->input('gender')
+        ]);
+        return response()->json($band, 201);
+    }
+    public function all(): JsonResponse
+    {
+        return response()->json(Band::all(), 200);
+    }
+
+    public function find($id)
+    {
 
     }
-    public function getAll(): JsonResponse
-    {
-        $musics = array(
-            "Pink floyd" => "Another break in the wall",
-            "ACDC" => "Back in black",
-        );
 
-        return response()->json($musics, 200);
+    public function listByGender($gender)
+    {
+
     }
 
-    // todo: getById($id) [READ]
-    // todo: getByGender($gender) [READ]
-    // todo: saveNewBand() [CREATE]
-    // todo: delete($id) [DELETE]
-    // todo: update($id) [UPDATE]
+    public function update($id)
+    {
+
+    }
+
+    public function delete($id)
+    {
+
+    }
 }
