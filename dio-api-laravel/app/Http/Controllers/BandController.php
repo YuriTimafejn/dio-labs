@@ -28,7 +28,7 @@ class BandController extends Controller
 
     public function find($id)
     {
-
+        return Band::findOrFail($id);
     }
 
     public function listByGender($gender)
